@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ----------------------------- |
-| product      | string     | null: false                   |
-| explanation  | text       | null: false                   |
-| category_id  | integer    | null: false                   |
-| status       | string     | null: false                   |
-| postage      | string     | null: false                   |
-| prefectures  | string     | null: false                   |
-| delivery_day | integer    | null: false                   |
-| price        | integer    | null: false                   |
-| user         | references | null: false,foreign_key: true |
+| Column          | Type       | Options                       |
+| --------------- | ---------- | ----------------------------- |
+| product         | string     | null: false                   |
+| explanation     | text       | null: false                   |
+| category_id     | integer    | null: false                   |
+| status_id       | integer    | null: false                   |
+| postage_id      | integer    | null: false                   |
+| prefecture_id   | integer    | null: false                   |
+| delivery_day_id | integer    | null: false                   |
+| price           | integer    | null: false                   |
+| user            | references | null: false,foreign_key: true |
 
 ### Association
 
@@ -52,15 +52,15 @@
 
 ## shippings テーブル
 
-| Column       | Type       | Options                 |
-| ------------ | ---------- | ----------------------- |
-| postcode     | integer    | null: false             |
-| prefectures  | integer    | null: false             |
-| municipality | string     | null: false             |
-| address      | string     | null: false             |
-| building     | string     | null: false             |
-| phone        | string     | null: false             |
-| purchase     | references | null: false,foreign_key |
+| Column         | Type       | Options                 |
+| -------------- | ---------- | ----------------------- |
+| postcode       | string     | null: false             |
+| prefecture_id  | integer    | null: false             |
+| municipality   | string     | null: false             |
+| address        | string     | null: false             |
+| building       | string     |                         |
+| phone          | string     | null: false             |
+| purchase       | references | null: false,foreign_key |
 
 ### Association
 
