@@ -1,24 +1,65 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| name               | text   | null: false |
+| kana               | text   | null: false |
+| birthday           | text   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchases
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| product     | string     | null: false |
+| explanation | text       | null: false |
+| user        | references | null: false |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_one :purchase
 
-* Services (job queues, cache servers, search engines, etc.)
+## purchase テーブル
 
-* Deployment instructions
+| Column    | Type       | Options     |
+| --------- | ---------- | ----------- |
+| category  | text       | null: false |
+| status    | text       | null: false |
+| postage   | text       | null: false |
+| region    | text       | null: false |
+| days      | text       | null: false |
+| price     | text       | null: false |
+| item      | references | null: false |
+| user      | references | null: false |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping
+
+## shipping テーブル
+
+| Column       | Type       | Options     |
+| ------------ | ---------- | ----------- |
+| postcode     | text       | null: false |
+| prefectures  | text       | null: false |
+| municipality | text       | null: false |
+| address      | text       | null: false |
+| building     | text       | null: false |
+| phone        | text       | null: false |
+| purchase     | references | null: false |
+
+### Association
+
+- belongs_to :purchase
