@@ -2,14 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| name               | text   | null: false |
-| kana               | text   | null: false |
-| birthday           | text   | null: false |
+| Column             | Type   | Options                 |
+| ------------------ | ------ | ----------------------- |
+| nickname           | string | null: false             |
+| email              | string | null: false,unique:true |
+| encrypted_password | string | null: false             |
+| name_sei           | string | null: false             |
+| name_mei           | string | null: false             |
+| kana_sei           | string | null: false             |
+| kana_mei           | string | null: false             |
+| birthday           | date   | null: false             |
 
 ### Association
 
@@ -18,29 +20,29 @@
 
 ## items テーブル
 
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| product     | string     | null: false |
-| explanation | text       | null: false |
-| user        | references | null: false |
+| Column       | Type       | Options                       |
+| ------------ | ---------- | ----------------------------- |
+| product      | string     | null: false                   |
+| explanation  | text       | null: false                   |
+| category_id  | integer    | null: false                   |
+| status       | string     | null: false                   |
+| postage      | string     | null: false                   |
+| prefectures  | string     | null: false                   |
+| delivery_day | integer    | null: false                   |
+| price        | integer    | null: false                   |
+| user         | references | null: false,foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :purchase
 
-## purchase テーブル
+## purchases テーブル
 
-| Column    | Type       | Options     |
-| --------- | ---------- | ----------- |
-| category  | text       | null: false |
-| status    | text       | null: false |
-| postage   | text       | null: false |
-| region    | text       | null: false |
-| days      | text       | null: false |
-| price     | text       | null: false |
-| item      | references | null: false |
-| user      | references | null: false |
+| Column    | Type       | Options                       |
+| --------- | ---------- | ----------------------------- |
+| item      | references | null: false,foreign_key: true |
+| user      | references | null: false,foreign_key: true |
 
 ### Association
 
@@ -48,17 +50,17 @@
 - belongs_to :item
 - has_one :shipping
 
-## shipping テーブル
+## shippings テーブル
 
-| Column       | Type       | Options     |
-| ------------ | ---------- | ----------- |
-| postcode     | text       | null: false |
-| prefectures  | text       | null: false |
-| municipality | text       | null: false |
-| address      | text       | null: false |
-| building     | text       | null: false |
-| phone        | text       | null: false |
-| purchase     | references | null: false |
+| Column       | Type       | Options                 |
+| ------------ | ---------- | ----------------------- |
+| postcode     | integer    | null: false             |
+| prefectures  | integer    | null: false             |
+| municipality | string     | null: false             |
+| address      | string     | null: false             |
+| building     | string     | null: false             |
+| phone        | string     | null: false             |
+| purchase     | references | null: false,foreign_key |
 
 ### Association
 
