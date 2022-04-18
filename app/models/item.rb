@@ -24,6 +24,11 @@ class Item < ApplicationRecord
   belongs_to :Delivery_day
 
   
-  validates :category_id, numericality: { other_than: 1,message: "cant't be blank" } 
+  validates :category_id, numericality: { other_than: 1,message: "選択が間違えています" } 
+  validates :status_id, numericality: { other_than: 1,message: "選択が間違えています" } 
+  validates :postage_id, numericality: { other_than: 1,message: "選択が間違えています" } 
+  validates :prefecture_id, numericality: { other_than: 1,message: "選択が間違えています" } 
+  validates :delivery_day_id, numericality: { other_than: 1,message: "選択が間違えています" } 
+  
 
 end
