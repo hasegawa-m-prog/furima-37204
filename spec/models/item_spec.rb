@@ -121,7 +121,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
           expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
-      it '価格は半角数字以外の値が含まれている場合は保存できない' do
+      it '価格は10000000以上の値では保存できない' do
         @item.price = 100000000
         @item.valid?
           expect(@item.errors.full_messages).to include("Price is not included in the list")
