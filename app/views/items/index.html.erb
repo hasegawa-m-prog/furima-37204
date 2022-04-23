@@ -130,7 +130,7 @@
     <% if @items.present? %>
      <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -144,10 +144,11 @@
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= item.product %>
+            <%= link_to item.product, item_path(item.id) %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.postage.name %></span>
+            <span><%= link_to item.price, item_path(item.id) %>円<br>
+            <%= link_to item.postage.name, item_path(item.id) %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>

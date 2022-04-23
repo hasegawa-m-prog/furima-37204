@@ -21,7 +21,7 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :postage
   belongs_to :prefecture
-  belongs_to :Delivery_day
+  belongs_to :delivery_day
 
   
   validates :category_id, numericality: { other_than: 1,message: "選択が間違えています" } 
