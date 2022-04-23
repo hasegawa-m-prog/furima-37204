@@ -23,12 +23,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     end
 
-  def destroy
-   @item = Item.find(params[:id])
-   @item.destroy
-  #  redirect_to action: :index
-   redirect_to items_path
-  end
+  # def destroy
+  #  @item = Item.find(params[:id])
+  #  @item.destroy
+  #  redirect_to items_path
+  # end
 
   private
 
