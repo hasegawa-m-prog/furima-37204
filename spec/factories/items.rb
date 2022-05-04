@@ -11,7 +11,7 @@ FactoryBot.define do
     prefecture_id          {Faker::Number.between(from: 02, to: 03)}
     delivery_day_id        {Faker::Number.between(from: 02, to: 03)}
     price                  {Faker::Number.between(from: 300, to: 9999999)}
-
+   
     association :user
   end
 end
