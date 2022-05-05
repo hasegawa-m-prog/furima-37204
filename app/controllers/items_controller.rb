@@ -25,9 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.id != @item.user.id
-      redirect_to root_path
-    elsif Purchase.exists?(item_id: @item.id)
+    if Purchase.exists?(item_id: @item.id)
       redirect_to root_path
     end
   end
@@ -53,9 +51,12 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-   end
+  end
+
+
+
 
   def contributor_confirmation
     redirect_to root_path unless current_user == @item.user
-   end
+  end
 end
