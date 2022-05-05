@@ -18,7 +18,7 @@ class User < ApplicationRecord
     validates :name_mei
   end
 
-  # has_many :items, dependent: :destroy
-  # has_many :purchases, dependent: :destroy
+  has_many :items
+  has_many :purchases
   validates :nickname, presence: true, length: { maximum: 40 }
 end

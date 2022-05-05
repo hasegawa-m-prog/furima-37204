@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.order("created_at DESC") 
+    @items = Item.order("created_at DESC")
+
   end
 
   def new
@@ -20,10 +21,13 @@ class ItemsController < ApplicationController
      end
    end
   
-  def show
-    end
+   def show
+  end
 
   def edit
+    if Purchase.exists?(item_id: @item.id)
+      redirect_to root_path
+    end
   end
 
   def update
@@ -47,9 +51,12 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-   end
+  end
+
+
+
 
   def contributor_confirmation
     redirect_to root_path unless current_user == @item.user
-   end
+  end
 end
