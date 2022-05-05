@@ -14,11 +14,7 @@ class PurchasesShipping
   end
 
   def save 
-    # 購入履歴を保存し、変数purchases代入する
     purchase = Purchase.create(item_id: item_id, user_id: user_id)
-    # 発送先情報を保存する
-    # purchases_idには、変数purchasesのidと指定する
-    # binding.pry
     Shipping.create(postcode: postcode, prefecture_id: prefecture_id, municipality: municipality, address: address, building: building, phone: phone, purchase_id: purchase.id)
   end
 end
