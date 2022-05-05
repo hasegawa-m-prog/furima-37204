@@ -60,11 +60,11 @@ RSpec.describe  PurchasesShipping, type: :model do
         expect(@purchase_shipping.errors.full_messages).to include("Phone can't be blank")
       end
       it '電話番号は9桁以下では購入できない' do
-        @purchase_shipping.phone = '090-1234-56'
+        @purchase_shipping.phone = '090123456'
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Phone 10桁以上11桁以内の半角数値のみで記載すること")
       end
-      it '電話番号は10桁以上では購入できない' do
+      it '電話番号は12桁以上では購入できない' do
         @purchase_shipping.phone = '090-1234-567'
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Phone 10桁以上11桁以内の半角数値のみで記載すること")
